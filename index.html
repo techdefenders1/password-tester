@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <img src="logos.png"
+    height=250px;width=300px;>
+    <title>Password Strength Tester</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #1e1e2e;
+            color: white;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background: #2a2a3a;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 10px;
+        }
+        .strength-meter {
+            height: 15px;
+            width: 100%;
+            background: #ddd;
+            border-radius: 10px;
+            margin: 10px 0;
+            position: relative;
+        }
+        .strength-bar {
+            height: 100%;
+            width: 5%;
+            border-radius: 10px;
+            transition: width 0.3s;
+        }
+        .weak { background: red; }
+        .medium { background: yellow; }
+        .strong { background: blue; }
+        .verystrong { background: green; }
+      
+      
+    </style>
+</head>
+<body>
+    <h2>Password Strength Tester</h2>
+    <div class="container">
+        <input type="password" id="password" placeholder="Enter Your Password...">
+        <div class="strength-meter">
+            <div class="strength-bar" id="strength-bar"></div>
+        </div>
+        <p id="strength-text">Password Strength: </p>
+        
+    </div>
+    <script>
+        const passwordInput = document.getElementById("password");
+        const strengthBar = document.getElementById("strength-bar");
+        const strengthText = document.getElementById("strength-text");
+
+        passwordInput.addEventListener("input", () => {
+            const password = passwordInput.value;
+            let strength = 0;
+
+            if (password.length > 8) strength++;
+            if (password.length > 12) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^a-zA-Z0-9]/.test(password)) strength++;
+            if (/[^a-zA-Z0-9]/.test(password)) strength++;
+
+            switch (strength) {
+                case 0:
+                  
+                case 1:
+                    strengthBar.style.width = "20%";
+                    strengthBar.className = "strength-bar weak";
+                    strengthText.innerText = "Password Strength: Weak";
+                    break;
+                case 2:
+                case 3:
+                    strengthBar.style.width = "50%";
+                    strengthBar.className = "strength-bar medium";
+                    strengthText.innerText = "Password Strength: Medium";
+                    break;
+                case 4:
+                case 5:
+                    strengthBar.style.width = "90%";
+                    strengthBar.className = "strength-bar strong";
+                    strengthText.innerText = "Password Strength: Strong";
+                    break;
+               case 6:
+               case 7:
+                    strengthBar.style.width = "100%";
+                    strengthBar.className = "strength-bar verystrong";
+                    strengthText.innerText = "Password Strength: Very Strong";
+                    break;
+               
+            }
+        });
+    </script>
+<title>Password Strength Suggestions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .suggestions-container {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 20px;
+      max-width: 400px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .suggestions-title {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #333333;
+      font-weight: bold;
+    }
+
+    .suggestion-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .suggestion-list li {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      color: #555555;
+    }
+
+    .suggestion-list li::before {
+      content: "✅";
+      color: #4CAF50;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="suggestions-container">
+    <div class="suggestions-title">Follow these suggestions to make it stronger!</div>
+    <ul class="suggestion-list">
+      <li>Use at least 8 characters</li>
+      <li>Include uppercase and lowercase letters</li>
+      <li>Add numbers (0-9)</li>
+      <li>Include special characters (!@#$%^&*)</li>
+      <li>Avoid common words or sequences</li>
+      <li>Don't reuse old passwords</li>
+    </ul>
+  </div>
+</body>
+</html>
